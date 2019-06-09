@@ -1,14 +1,32 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Ionic Blank
+      Mi Encarta Multimedia
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div>
+    <div class="ion-text-center">
+      <h2 style="color: white">Semestres</h2>
+    </div>
+    <ion-card style="background-color: white" (click)="expandItem(item)" *ngFor="let item of items">
+      <ion-card-header>
+        <ion-card-title>{{item.name}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <app-expandable [expanded]="item.expanded" class="ion-text-center" expandHeight="500px">
+          <h3 class="ion-text-center">Materias</h3>
+          <span *ngIf="modelMateria[0]==null" class="ion-text-center">:(</span>
+          <div *ngFor="let materia of modelMateria">
+            <ion-button (click)="getConcepto(materia,item)" shape="round">
+              {{ materia.nombreMateria }}
+            </ion-button>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

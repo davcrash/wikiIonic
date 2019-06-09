@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { ExpandableComponent } from "../components/expandable/expandable.component";
+import { ModalComponent } from '../components/modal/modal.component';
+import { SafeHtmlPipe } from '../safe-html.pipe';
 
 @NgModule({
   imports: [
@@ -18,6 +21,8 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, ExpandableComponent, ModalComponent, SafeHtmlPipe],
+  providers: [ModalComponent],
+  entryComponents: [ModalComponent]
 })
-export class HomePageModule {}
+export class HomePageModule { }
