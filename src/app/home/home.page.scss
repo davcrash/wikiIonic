@@ -1,3 +1,25 @@
-ion-content{
+/* ion-content{
     --ion-background-color: linear-gradient(133deg, #32B9E5 0%, rgba(144,225,235,1) 63%, rgba(0,212,255,0) 100%);;
+} */
+
+.input-search{
+    
+    background-color: rgba(128, 128, 128,.1);
+    border-radius: 5px;
 }
+
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+
+  .div-semestre {
+    display: inline-block;
+    background-color: #32B9E5;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+  }
+  

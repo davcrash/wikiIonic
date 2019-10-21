@@ -19,16 +19,16 @@ export class HomePage {
 
   constructor(private apiService: AppService, public toastController: ToastController, public modalController: ModalController) {
     this.items = [
-      { expanded: false, name: "Uno", id: 1 },
-      { expanded: false, name: "Dos", id: 2 },
-      { expanded: false, name: "Tres", id: 3 },
-      { expanded: false, name: "Cuatro", id: 4 },
-      { expanded: false, name: "Cinco", id: 5 },
-      { expanded: false, name: "Seis", id: 6 },
-      { expanded: false, name: "Siete", id: 7 },
-      { expanded: false, name: "Ocho", id: 8 },
-      { expanded: false, name: "Nueve", id: 9 },
-      { expanded: false, name: "Diez", id: 10 },
+      { expanded: false, name: "Uno", id: 1, color: "#007bff", textColor: "white" },
+      { expanded: false, name: "Dos", id: 2, color: "#6c757d", textColor: "white" },
+      { expanded: false, name: "Tres", id: 3, color: "#28a745", textColor: "white" },
+      { expanded: false, name: "Cuatro", id: 4, color: "#dc3545", textColor: "white" },
+      { expanded: false, name: "Cinco", id: 5, color: "#ffc107", textColor: "black" },
+      { expanded: false, name: "Seis", id: 6, color: "#17a2b8", textColor: "white" },
+      { expanded: false, name: "Siete", id: 7, color: "#f8f9fa", textColor: "black" },
+      { expanded: false, name: "Ocho", id: 8, color: "#343a40", textColor: "white" },
+      { expanded: false, name: "Nueve", id: 9, color: "#fff", textColor: "black" },
+      { expanded: false, name: "Diez", id: 10, color: "#007bff", textColor: "white" },
     ];
   }
   async presentToast(msg: string) {
@@ -88,8 +88,7 @@ export class HomePage {
     );
   }
 
-  getConcepto(materia: any, item: any) {
-    this.expandItem(item);
+  getConcepto(materia: any) {
 
     this.getConceptoSuccess({
       idMateria: materia.id

@@ -1,20 +1,61 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      LOGO
+      <!-- <ion-icon slot="icon-only" name="american-football" style="margin-left: 10px"></ion-icon> -->
+    </ion-buttons>
     <ion-title>
-      Mi Encarta Multimedia
+      <div class="input-search">
+        <ion-input clearInput placeholder="Buscar"></ion-input>
+      </div>
     </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="people"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div>
     <div class="ion-text-center">
-      <h2 style="color: white">Semestres</h2>
+      <h2>Semestres</h2>
     </div>
-    <ion-card style="background-color: white" (click)="expandItem(item)" *ngFor="let item of items">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="div-semestre" *ngFor="let item of items; let i = index" size="2" [offset]="i==5||i==0?1:0"
+          [ngStyle]="{'background-color': item.color, 'color':item.textColor}" (click)="expandItem(item)">
+          {{item.id}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <div *ngIf="modelMateria[0]!=null">
+      <ion-row>
+        <ion-col size="6" *ngFor="let materia of modelMateria">
+          <ion-card (click)="getConcepto(materia,item)" style="background-color: white">
+            <ion-card-header>
+              <ion-img [src]="materia.urlimage"></ion-img>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card-title>{{ materia.nombreMateria }}</ion-card-title>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <!-- <ion-card style="background-color: white" (click)="expandItem(item)" *ngFor="let item of items">
       <ion-card-header>
         <ion-card-title>{{item.name}}</ion-card-title>
       </ion-card-header>
+
 
       <ion-card-content>
         <app-expandable [expanded]="item.expanded" class="ion-text-center" expandHeight="500px">
@@ -27,6 +68,7 @@
           </div>
         </app-expandable>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
   </div>
+
 </ion-content>
