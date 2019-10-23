@@ -8,10 +8,12 @@ import { HomePage } from './home.page';
 import { ExpandableComponent } from "../components/expandable/expandable.component";
 import { ModalComponent } from '../components/modal/modal.component';
 import { SafeHtmlPipe } from '../safe-html.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
+    FontAwesomeModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild([

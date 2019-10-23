@@ -7,15 +7,19 @@ import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../components/modal/modal.component';
 
+import { faCloudMeatball } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  faCloudMeatball = faCloudMeatball;
   public items: any = [];
-  modelMateria: any = [];
-  modelConcepto: any = [];
+  modelMateria: Array<any> = [];
+  materiaFiltered: Array<any> = [];
+  modelConcepto: Array<any> = [];
 
   constructor(private apiService: AppService, public toastController: ToastController, public modalController: ModalController) {
     this.items = [
@@ -73,9 +77,11 @@ export class HomePage {
     }).subscribe(operationResult => {
       console.log(operationResult)
       this.modelMateria = [];
+      this.materiaFiltered = [];
       this.modelConcepto = [];
       if (operationResult.data.length > 0) {
         this.modelMateria = operationResult.data;
+        this.materiaFiltered = operationResult.data;
       } else {
         this.presentToast('El semestre ' + semestre + ' no tiene materias asignadas');
       }
@@ -110,5 +116,14 @@ export class HomePage {
 
   private handleError(err: HttpErrorResponse) {
     return throwError(err);
+  }
+
+  filter(txt) {
+    if (txt != "" && this.modelMateria.length >= 1) {
+      this.materiaFiltered = this.modelMateria.filter(m => m.nombreMateria.toLowerCase().includes(txt.toLowerCase()));
+      console.log(this.materiaFiltered);
+      return;
+    }
+    this.materiaFiltered = this.modelMateria;
   }
 }

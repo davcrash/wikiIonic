@@ -1,12 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      LOGO
+      <fa-icon style="margin-left: 15px; color:#e60023" [icon]="faCloudMeatball" size="lg"></fa-icon>
+
       <!-- <ion-icon slot="icon-only" name="american-football" style="margin-left: 10px"></ion-icon> -->
     </ion-buttons>
     <ion-title>
       <div class="input-search">
-        <ion-input clearInput placeholder="Buscar"></ion-input>
+        <ion-input clearInput placeholder="Buscar" (ionChange)='filter($event.target.value)'></ion-input>
       </div>
     </ion-title>
     <ion-buttons slot="secondary">
@@ -35,9 +36,9 @@
     </ion-grid>
 
 
-    <div *ngIf="modelMateria[0]!=null">
+    <div *ngIf="materiaFiltered[0]!=null">
       <ion-row>
-        <ion-col size="6" *ngFor="let materia of modelMateria">
+        <ion-col size="6" *ngFor="let materia of materiaFiltered">
           <ion-card (click)="getConcepto(materia,item)" style="background-color: white">
             <ion-card-header>
               <ion-img [src]="materia.urlimage"></ion-img>
